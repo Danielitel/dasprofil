@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title }} | {{ site.title }}</title>
+
+  <meta name="description" content="{{ page.description | default: site.description }}">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    nav {
+      background: #222;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Das Profil</h1>
+</header>
+
+<nav>
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="#">News</a>
+  <a href="#">Business</a>
+  <a href="#">Entertainment</a>
+  <a href="#">Lifestyle</a>
+</nav>
+
+<main>
+  {{ content }}
+</main>
+
+<footer>
+  <p>© {{ site.time | date: "%Y" }} Das Profil</p>
+</footer>
+
+</body>
+  </html>
