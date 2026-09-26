@@ -1,8 +1,11 @@
 ---
-layout: home
-title: Das Profil
+layout: default
+title: Home
+description: News, stories and useful information from Das Profil.
 ---
 
-Welcome to Das Profil.
+<h2>Latest Stories</h2>
 
-News, stories and useful information.
+<p>Welcome to Das Profil.</p>
+
+<p>News, stories and useful information.</p>
