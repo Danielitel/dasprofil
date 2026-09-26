@@ -7,15 +7,12 @@ description: News, stories and useful information from Das Profil.
 <h2>Latest Stories</h2>
 
 {% for post in site.posts %}
+
 <article class="post-card">
 
   {% if post.image %}
   <a href="{{ post.url | relative_url }}">
-    <img
-      src="{{ post.image | relative_url }}"
-      alt="{{ post.title }}"
-      style="width:100%; height:220px; object-fit:cover; display:block; margin-bottom:15px;"
-    >
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
   </a>
   {% endif %}
 
@@ -38,4 +35,5 @@ description: News, stories and useful information from Das Profil.
   </a>
 
 </article>
+
 {% endfor %}
