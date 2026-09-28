@@ -3,9 +3,8 @@ layout: post
 title: "Welcome to Das Profil"
 description: "Welcome to Das Profil, a new online publication for news, stories and useful information."
 date: 2026-09-26
+image: /assets/images/welcome.jpg.jpeg
 ---
-
-<img src="/dasprofil/assets/images/welcome.jpg.jpeg" alt="Welcome to Das Profil" style="width:100%; height:auto; display:block;">
 
 Welcome to **Das Profil**.
 
