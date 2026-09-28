@@ -553,19 +553,29 @@
 
     <h3>Trending</h3>
 
-    <ol class="trending-list">
+<div class="trending-list">
 
-      {% for post in site.posts limit:5 %}
+  {% for post in site.posts limit:5 %}
 
-      <li>
-        <a href="{{ post.url | relative_url }}">
-          {{ post.title }}
-        </a>
-      </li>
+  <a href="{{ post.url | relative_url }}" class="trending-item">
 
-      {% endfor %}
+    {% if post.image %}
+    <img
+      src="{{ post.image | relative_url }}"
+      alt="{{ post.title }}"
+      class="trending-thumb"
+    >
+    {% endif %}
 
-    </ol>
+    <span class="trending-title">
+      {{ post.title }}
+    </span>
+
+  </a>
+
+  {% endfor %}
+
+
 
   </div>
 
