@@ -4,11 +4,9 @@ layout: default
 
 <article>
 
-  {% if page.image %}
-    <div class="featured-image">
-      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-    </div>
-  {% endif %}
+  <img src="{{ '/assets/images/welcome.jpg.jpeg' | relative_url }}"
+       alt="{{ page.title }}"
+       style="width:100%; max-width:900px; height:auto; display:block; margin-bottom:25px;">
 
   <h1>{{ page.title }}</h1>
 
