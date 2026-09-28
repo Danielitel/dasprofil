@@ -5,7 +5,7 @@ description: "Welcome to Das Profil, a new online publication for news, stories 
 date: 2026-09-26
 ---
 
-<img src="/dasprofil/assets/images/welcome.jpg.jpeg" alt="Welcome to Das Profil">
+<img src="/dasprofil/assets/images/welcome.jpg.jpeg" alt="Welcome to Das Profil" style="width:100%; height:auto; display:block;">
 
 Welcome to **Das Profil**.
 
