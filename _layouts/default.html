@@ -434,25 +434,74 @@
 
   <aside class="sidebar">
 
-    <h3>Latest Stories</h3>
+  <div class="sidebar-section">
 
-    <ul>
+    <h3>Trending</h3>
+
+    <ol class="trending-list">
+
       {% for post in site.posts limit:5 %}
-        <li>
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </li>
+
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </li>
+
       {% endfor %}
+
+    </ol>
+
+  </div>
+
+
+  <div class="sidebar-section">
+
+    <h3>Categories</h3>
+
+    <ul class="category-list">
+
+      <li>
+        <a href="{{ '/news/' | relative_url }}">News</a>
+      </li>
+
+      <li>
+        <a href="{{ '/biography/' | relative_url }}">Biography</a>
+      </li>
+
+      <li>
+        <a href="{{ '/entertainment/' | relative_url }}">Entertainment</a>
+      </li>
+
+      <li>
+        <a href="{{ '/lifestyle/' | relative_url }}">Lifestyle</a>
+      </li>
+
+      <li>
+        <a href="{{ '/trending/' | relative_url }}">Trending</a>
+      </li>
+
     </ul>
+
+  </div>
+
+
+  <div class="sidebar-section">
 
     <h3>About Das Profil</h3>
 
     <p>
-      Das Profil brings you news, stories and useful information.
+      Das Profil is an online publication covering celebrity biographies,
+      entertainment, lifestyle, news and trending stories.
     </p>
 
-  </aside>
+    <a href="{{ '/about/' | relative_url }}" class="sidebar-link">
+      Learn more →
+    </a>
+
+  </div>
+
+</aside>
 
 </div>
 
