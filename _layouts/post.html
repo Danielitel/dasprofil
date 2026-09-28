@@ -8,14 +8,24 @@ layout: default
   <img
     src="{{ page.image | relative_url }}"
     alt="{{ page.title }}"
-    style="width:100%; height:auto; display:block; margin-bottom:25px;"
+    class="article-featured-image"
   >
   {% endif %}
 
-  <h1>{{ page.title }}</h1>
+  <div class="article-header">
 
-  <div class="post-date">
-    {{ page.date | date: "%B %d, %Y" }}
+    {% if page.category %}
+    <div class="article-category">
+      {{ page.category }}
+    </div>
+    {% endif %}
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="article-meta">
+      <span>{{ page.date | date: "%B %d, %Y" }}</span>
+    </div>
+
   </div>
 
   <div class="article-content">
