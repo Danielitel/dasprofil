@@ -6,27 +6,30 @@ layout: null
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- HOMEPAGE -->
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}/</loc>
   </url>
 
+  <!-- POSTS -->
   {% for post in site.posts %}
-
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url | remove_first: site.baseurl }}</loc>
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
   </url>
-
   {% endfor %}
 
-  {% for page in site.pages %}
+  <!-- IMPORTANT PAGES -->
+  {% assign sitemap_pages = "about,news,biography,entertainment,lifestyle,trending" | split: "," %}
 
-    {% if page.url != "/" and page.url != "/404.html" and page.url != "/sitemap.xml" %}
+  {% for page_name in sitemap_pages %}
 
+    {% assign sitemap_page = site.pages | where: "name", page_name | first %}
+
+    {% if sitemap_page %}
     <url>
-      <loc>{{ site.url }}{{ site.baseurl }}{{ page.url | remove_first: site.baseurl }}</loc>
+      <loc>{{ site.url }}{{ site.baseurl }}{{ sitemap_page.url | remove_first: site.baseurl }}</loc>
     </url>
-
     {% endif %}
 
   {% endfor %}
