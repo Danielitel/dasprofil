@@ -10,44 +10,101 @@ description: Celebrity biographies, profiles and life stories from Das Profil.
 
   {% assign biography_posts = site.posts | where: "category", "Biography" %}
 
-  {% for post in biography_posts %}
+  <div id="biography-posts">
 
-  <article class="post-card">
+    {% for post in biography_posts %}
 
-    {% if post.image %}
-    <a href="{{ post.url | relative_url }}">
-      <img
-        src="{{ post.image | relative_url }}"
-        alt="{{ post.title }}"
-        class="post-card-image"
-      >
-    </a>
-    {% endif %}
+    <article class="post-card biography-pagination-item">
 
-    <div class="post-card-content">
+      {% if post.image %}
+      <a href="{{ post.url | relative_url }}">
+        <img
+          src="{{ post.image | relative_url }}"
+          alt="{{ post.title }}"
+          class="post-card-image"
+        >
+      </a>
+      {% endif %}
 
-      <h2>
-        <a href="{{ post.url | relative_url }}">
-          {{ post.title }}
+      <div class="post-card-content">
+
+        <h2>
+          <a href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+        </h2>
+
+        <div class="post-date">
+          {{ post.date | date: "%B %d, %Y" }}
+        </div>
+
+        <p>
+          {{ post.excerpt | strip_html | truncate: 220 }}
+        </p>
+
+        <a class="read-more" href="{{ post.url | relative_url }}">
+          Read more →
         </a>
-      </h2>
 
-      <div class="post-date">
-        {{ post.date | date: "%B %d, %Y" }}
       </div>
 
-      <p>
-        {{ post.excerpt | strip_html | truncate: 220 }}
-      </p>
+    </article>
 
-      <a class="read-more" href="{{ post.url | relative_url }}">
-        Read more →
-      </a>
+    {% endfor %}
 
-    </div>
+  </div>
 
-  </article>
-
-  {% endfor %}
+  <div id="biography-pagination" class="pagination"></div>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const posts = document.querySelectorAll(".biography-pagination-item");
+  const pagination = document.getElementById("biography-pagination");
+
+  const postsPerPage = 5;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  function showPage(page) {
+
+    posts.forEach((post, index) => {
+
+      const start = (page - 1) * postsPerPage;
+      const end = start + postsPerPage;
+
+      post.style.display =
+        index >= start && index < end ? "block" : "none";
+
+    });
+
+    pagination.innerHTML = "";
+
+    if (totalPages <= 1) {
+      return;
+    }
+
+    for (let i = 1; i <= totalPages; i++) {
+
+      const button = document.createElement("a");
+
+      button.href = "#";
+      button.textContent = i;
+      button.className = i === page ? "active" : "";
+
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        showPage(i);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      pagination.appendChild(button);
+    }
+
+  }
+
+  showPage(1);
+
+});
+</script>
