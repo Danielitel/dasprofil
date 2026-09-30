@@ -4,12 +4,30 @@ layout: default
 
 <article>
 
-  <p>IMAGE TEST: {{ page.image }}</p>
+  {% if page.image %}
+  <img
+    src="{{ page.image | relative_url }}"
+    alt="{{ page.title | escape }}"
+    class="article-featured-image"
+  >
+  {% endif %}
 
-  <h1>{{ page.title }}</h1>
+  <div class="article-header">
 
-  <div class="post-date">
-    {{ page.date | date: "%B %d, %Y" }}
+    {% if page.category %}
+    <div class="article-category">
+      {{ page.category }}
+    </div>
+    {% endif %}
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="article-meta">
+      <span>
+        Published {{ page.date | date: "%B %d, %Y" }}
+      </span>
+    </div>
+
   </div>
 
   <div class="article-content">
@@ -17,3 +35,32 @@ layout: default
   </div>
 
 </article>
+
+
+<!-- ARTICLE STRUCTURED DATA -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.title | escape }}"
+  }
+  {% if page.image %},
+  "image": "{{ page.image | absolute_url }}"
+  {% endif %}
+}
+</script>
