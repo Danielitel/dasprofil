@@ -6,12 +6,10 @@ layout: null
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- HOMEPAGE -->
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}/</loc>
   </url>
 
-  <!-- POSTS -->
   {% for post in site.posts %}
   <url>
     <loc>{{ site.url }}{{ site.baseurl }}{{ post.url | remove_first: site.baseurl }}</loc>
@@ -19,19 +17,28 @@ layout: null
   </url>
   {% endfor %}
 
-  <!-- IMPORTANT PAGES -->
-  {% assign sitemap_pages = "about,news,biography,entertainment,lifestyle,trending" | split: "," %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/about/</loc>
+  </url>
 
-  {% for page_name in sitemap_pages %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/news/</loc>
+  </url>
 
-    {% assign sitemap_page = site.pages | where: "name", page_name | first %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/biography/</loc>
+  </url>
 
-    {% if sitemap_page %}
-    <url>
-      <loc>{{ site.url }}{{ site.baseurl }}{{ sitemap_page.url | remove_first: site.baseurl }}</loc>
-    </url>
-    {% endif %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/entertainment/</loc>
+  </url>
 
-  {% endfor %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/lifestyle/</loc>
+  </url>
+
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/trending/</loc>
+  </url>
 
 </urlset>
