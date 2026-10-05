@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danielitel.github.io/dasprofil/sitemap.xml
+Sitemap: https://www.dasprofil.jo3.org/sitemap.xml
